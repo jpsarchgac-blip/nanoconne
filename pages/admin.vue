@@ -363,6 +363,7 @@ h1 {
   background: var(--nano);
   color: #fff;
   padding: 12px;
+  min-height: var(--touch-min);
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 700;
   cursor: pointer;
@@ -441,7 +442,8 @@ h1 {
   appearance: none;
   border: 0;
   border-radius: 999px;
-  padding: 11px 24px;
+  padding: 12px 24px;
+  min-height: var(--touch-min);
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-size: 13px;
   font-weight: 700;
@@ -661,6 +663,25 @@ li {
   header {
     border-right: 0;
     padding: 24px 20px 8px;
+  }
+
+  .desk {
+    padding: 16px 14px 12px;
+  }
+
+  .topic-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .topic-num {
+    display: none;
+  }
+
+  .topic-del,
+  .link-del {
+    min-height: var(--touch-min);
+    padding: 8px 12px;
   }
 
   .link-row {

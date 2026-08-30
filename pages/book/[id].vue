@@ -48,7 +48,9 @@ const missingMessage = computed(() => {
   appearance: none;
   border: 0;
   border-radius: 999px;
-  padding: 10px 20px;
+  padding: 12px 24px;
+  min-height: var(--touch-min);
+  min-width: 120px;
   background: var(--nano);
   color: #fff;
   font-weight: 700;

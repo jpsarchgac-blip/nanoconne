@@ -407,8 +407,8 @@ watch(
 
 .nav {
   flex: 0 0 auto;
-  width: 36px;
-  height: 36px;
+  width: var(--touch-min);
+  height: var(--touch-min);
   border: 0;
   border-radius: 999px;
   background: rgb(255 255 255 / 0.92);
@@ -424,6 +424,10 @@ watch(
   transform: scale(1.05);
 }
 
+.nav:active {
+  transform: scale(0.96);
+}
+
 @keyframes marquee-flow {
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-50%, 0, 0); }
@@ -433,12 +437,6 @@ watch(
   .shelf {
     gap: 4px;
     padding: 0 4px;
-  }
-
-  .nav {
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
   }
 }
 </style>

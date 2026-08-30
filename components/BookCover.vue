@@ -401,4 +401,27 @@ const emit = defineEmits<{
 .cover--lg .cover-title {
   font-size: 18px;
 }
+
+@media (max-width: 720px) {
+  .cover--lg {
+    width: min(220px, 42vw);
+    height: auto;
+    aspect-ratio: 11 / 15;
+    padding: 14px 14px 18px;
+  }
+}
+
+@media (hover: none) {
+  .cover:hover {
+    transform: none;
+  }
+
+  .cover--done:hover {
+    box-shadow: inset 0 0 0 1px rgb(22 52 60 / 0.12);
+  }
+
+  .cover:active {
+    transform: scale(0.98);
+  }
+}
 </style>

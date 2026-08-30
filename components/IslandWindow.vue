@@ -49,18 +49,20 @@ const { canBack, canForward, back, forward } = useHistoryNav()
   display: flex;
   align-items: center;
   gap: 14px;
+  max-width: 100%;
 }
 
 .island-shell {
   position: relative;
   flex: 0 1 auto;
   min-width: 0;
+  max-width: 100%;
 }
 
 .island-nav {
   flex: 0 0 auto;
-  width: 46px;
-  height: 46px;
+  width: var(--touch-min);
+  height: var(--touch-min);
   padding: 0;
   border: 2px solid var(--nano);
   border-radius: 50%;
@@ -98,12 +100,22 @@ const { canBack, canForward, back, forward } = useHistoryNav()
 
 @media (max-width: 720px) {
   .island-wrap {
-    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .island-shell {
+    flex: 1 1 100%;
+    order: 1;
+    width: 100%;
   }
 
   .island-nav {
-    width: 38px;
-    height: 38px;
+    order: 2;
+    width: var(--touch-min);
+    height: var(--touch-min);
     font-size: 24px;
   }
 }

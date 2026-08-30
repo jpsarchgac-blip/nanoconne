@@ -541,8 +541,8 @@ h1 {
 
 .star {
   appearance: none;
-  width: 36px;
-  height: 36px;
+  width: var(--touch-min);
+  height: var(--touch-min);
   border: 0;
   border-radius: 10px;
   background: var(--island);
@@ -569,7 +569,8 @@ h1 {
   appearance: none;
   border: 0;
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 10px 16px;
+  min-height: var(--touch-min);
   background: var(--island);
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-size: 12px;
@@ -627,15 +628,43 @@ h1 {
 @media (max-width: 720px) {
   .play {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
 
   header {
     border-right: 0;
-    padding: 22px 20px 8px;
+    padding: 16px 16px 8px;
+  }
+
+  h1 {
+    font-size: clamp(20px, 5.5vw, 28px);
   }
 
   .stage-in {
-    min-height: 240px;
+    min-height: 0;
+    flex: 1;
+    padding: 12px;
+  }
+
+  .stage-in--pad {
+    justify-content: stretch;
+  }
+
+  .pad-wrap {
+    min-height: min(42dvh, 360px);
+  }
+
+  .ballot {
+    max-height: min(38dvh, 280px);
+  }
+
+  .join {
+    width: 100%;
+  }
+
+  .join input,
+  .join button {
+    min-height: var(--touch-min);
   }
 }
 </style>

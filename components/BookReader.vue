@@ -263,7 +263,8 @@ h1 :deep(.em-mark) {
   appearance: none;
   border: 0;
   border-radius: 999px;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  min-height: var(--touch-min);
   background: var(--nano);
   color: #fff;
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -309,8 +310,19 @@ h1 :deep(.em-mark) {
     grid-template-columns: 1fr;
   }
 
+  .page--text {
+    padding: 20px 16px;
+  }
+
   .page--art {
-    min-height: 200px;
+    min-height: clamp(180px, 38dvh, 280px);
+  }
+
+  .nav {
+    position: sticky;
+    bottom: 0;
+    background: var(--island);
+    padding-bottom: 8px;
   }
 }
 </style>

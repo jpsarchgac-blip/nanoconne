@@ -39,8 +39,6 @@
       ref="canvasRef"
       class="board"
       :class="{ 'board--locked': locked, 'board--erase': !locked && tool === 'erase' }"
-      width="720"
-      height="480"
       @pointerdown="onDown"
       @pointermove="onMove"
       @pointerup="onUp"
@@ -81,6 +79,36 @@ const canRedo = ref(false)
 let last: { x: number; y: number } | null = null
 const past: ImageData[] = []
 const future: ImageData[] = []
+let resizeObserver: ResizeObserver | undefined
+
+function syncCanvasSize() {
+  const canvas = canvasRef.value
+  if (!canvas) return
+
+  const cssWidth = Math.max(1, Math.round(canvas.clientWidth))
+  const cssHeight = Math.max(1, Math.round(canvas.clientHeight))
+  const dpr = Math.min(window.devicePixelRatio || 1, 2)
+  const pixelWidth = Math.round(cssWidth * dpr)
+  const pixelHeight = Math.round(cssHeight * dpr)
+
+  if (canvas.width === pixelWidth && canvas.height === pixelHeight) return
+
+  const snapshot = canvas.width > 0 ? capture() : null
+  canvas.width = pixelWidth
+  canvas.height = pixelHeight
+
+  const context = ctx()
+  if (!context) return
+  fillWhite()
+
+  if (snapshot) {
+    context.putImageData(snapshot, 0, 0)
+    pushHistory()
+    return
+  }
+
+  pushHistory()
+}
 
 function ctx() {
   return canvasRef.value?.getContext("2d", { willReadFrequently: true })
@@ -255,12 +283,14 @@ function onKey(event: KeyboardEvent) {
 }
 
 onMounted(() => {
-  fillWhite()
-  pushHistory()
+  resizeObserver = new ResizeObserver(() => syncCanvasSize())
+  if (canvasRef.value) resizeObserver.observe(canvasRef.value)
+  syncCanvasSize()
   window.addEventListener("keydown", onKey)
 })
 
 onBeforeUnmount(() => {
+  resizeObserver?.disconnect()
   window.removeEventListener("keydown", onKey)
 })
 
@@ -297,8 +327,8 @@ defineExpose({
 
 .swatch {
   appearance: none;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   border-radius: 50%;
   background: var(--swatch);
@@ -315,7 +345,8 @@ defineExpose({
   appearance: none;
   border: 0;
   border-radius: 999px;
-  padding: 6px 12px;
+  padding: 10px 14px;
+  min-height: var(--touch-min);
   background: var(--island);
   color: var(--ink);
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -349,6 +380,8 @@ defineExpose({
   flex: 1;
   min-height: 0;
   width: 100%;
+  aspect-ratio: 3 / 2;
+  max-height: 100%;
   display: block;
   background: #fff;
   border-radius: 16px;
@@ -367,8 +400,22 @@ defineExpose({
 }
 
 @media (max-width: 720px) {
+  .tools {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-bottom: 4px;
+    background: linear-gradient(#e7f7fc 70%, rgb(231 247 252 / 0));
+  }
+
+  .swatch {
+    width: 32px;
+    height: 32px;
+  }
+
   .tool--clear {
     margin-left: 0;
+    flex: 1 1 100%;
   }
 }
 </style>

@@ -8,6 +8,12 @@ export default defineNuxtConfig({
     head: {
       title: "ペラっと | Peratto",
       htmlAttrs: { lang: "ja" },
+      meta: [
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1, viewport-fit=cover",
+        },
+      ],
       link: [
         { rel: "icon", href: "/sozai/nanosuke.png", type: "image/png" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
