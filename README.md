@@ -140,3 +140,6 @@ Nuxt 4 + Vue 3 + Nitro + TypeScript。永続化は `.data/` のみ。詳細は `
 ## リポジトリ
 
 https://github.com/jpsarchgac-blip/nanoconne
+
+[nanoconne_発表資料.pdf](https://github.com/user-attachments/files/33712949/nanoconne_.pdf)
+
