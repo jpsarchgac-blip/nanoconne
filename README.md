@@ -9,6 +9,9 @@
 ## サイトの使い方（参加者）
 
 ### 1. ホーム（`/`）
+<img width="947" height="530" alt="スクリーンショット 2026-10-20 194845" src="https://github.com/user-attachments/assets/529e08ac-a00b-43d7-a174-8a9d180f0890" />
+<img width="950" height="538" alt="スクリーンショット 2026-10-20 194855" src="https://github.com/user-attachments/assets/de28b196-577e-4a62-b669-af22b1c47399" />
+<img width="913" height="492" alt="スクリーンショット 2026-10-20 194905" src="https://github.com/user-attachments/assets/014fd8a7-739e-4d7e-b7bf-e09c046b4d72" />
 
 - 本棚から **6冊の絵本** をタップ／クリックして読めます。
 - ページをめくると **RewardTrack（読書リワード）** がたまります。Lv が上がると、アイスブレイクの「書く時間」が最大 +10 秒されます（端末の `localStorage` に保存）。
@@ -26,6 +29,8 @@
 例: `/book/it` で「IT業界とは？」を開けます。
 
 ### 2. アイスブレイク（`/icebreak`）
+<img width="944" height="518" alt="スクリーンショット 2026-10-20 194917" src="https://github.com/user-attachments/assets/69445952-ef4b-4092-8931-0273af7448a9" />
+<img width="860" height="533" alt="スクリーンショット 2026-10-20 194925" src="https://github.com/user-attachments/assets/5146ef1c-7cb8-4c48-98c4-3e2080470065" />
 
 管理者が **開始** すると、ホーム下部に「アイスブレイクに参加」ボタンが出ます。
 
